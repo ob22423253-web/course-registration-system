@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: course-registration-backend
+  data:
+    mongodb:
+      # Connection string comes from env so we never commit Atlas credentials.
+      uri: ${MONGODB_URI:mongodb://localhost:27017/course-registration}
+      database: course-registration
+      auto-index-creation: true
+
+# Where to reach the Python analytics service. Kept env-driven so dev/prod differ.
+python:
+  service:
+    url: ${PYTHON_SERVICE_URL:http://localhost:8000}
+    timeout-ms: 5000
+
+# Concurrency knobs — sized for an 8-core machine; tune in stress tests.
+registration:
+  executor:
+    core-pool-size: 8
+    max-pool-size: 16
+    queue-capacity: 500
+  waitlist:
+    consumer-poll-ms: 200
+
+logging:
+  level:
+    root: INFO
+    com.uni.registration: DEBUG
+    org.springframework.data.mongodb: WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

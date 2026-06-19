@@ -1,0 +1,28 @@
+# Test profile — embedded Mongo replaces Atlas, Python URL is irrelevant
+# because we MockBean the client.
+spring:
+  data:
+    mongodb:
+      database: course-registration-test
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 7.0.4
+
+python:
+  service:
+    url: http://localhost:8000
+    timeout-ms: 1000
+
+registration:
+  executor:
+    core-pool-size: 4
+    max-pool-size: 8
+    queue-capacity: 200
+
+logging:
+  level:
+    root: WARN
+    com.uni.registration: INFO
