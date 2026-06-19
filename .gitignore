@@ -1,0 +1,29 @@
+# java / maven
+target/
+*.class
+*.jar
+*.war
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# env / secrets
+.env
+.env.*
+application-local.properties
+
+# ide
+.idea/
+.vscode/
+*.iml
+
+# os
+.DS_Store
+
+# ai tooling
+CLAUDE.md
+.claude/
