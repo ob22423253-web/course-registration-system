@@ -1,5 +1,6 @@
 server:
-  port: 8080
+  # Render injects PORT; honour it but fall back to 8080 for local runs.
+  port: ${PORT:8080}
   servlet:
     context-path: /
 
